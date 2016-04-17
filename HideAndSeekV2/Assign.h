@@ -33,7 +33,12 @@ using namespace std::experimental::filesystem;
 typedef vector<char> chars;
 
 class Assign {
+	static Assign* assign;
+	Assign() = default;
+	Assign(const Assign&) = delete;
+	Assign& operator=(const Assign&) = delete;
 public:
+	static Assign* fetch() { return assign; }
 	void run(chars params, string param1, string param2);
 }; 
 
