@@ -17,16 +17,16 @@ void Command::parseCommand(string command) {
 		}
 	}
 	params.resize(numParams);
-	if (com == "MakeDirectory" || com == "mkdir") { (new MakeDirectory())->run(params, param1, param2); return; }
-	else if (com == "MakeFile" || com == "mkfile") { (new MakeFile())->run(params, param1, param2); return; }
-	else if (com == "ChangeDirectory" || com == "cd") { (new ChangeDirectory())->run(params, param1, param2); return; }
-	else if (com == "PrintDirectoryContents" || com == "dir") { (new PrintDirectoryContents())->run(params, param1, param2); return; }
-	else if (com == "Copy" || com == "cp") { (new Copy())->run(params, param1, param2); return; }
-	else if (com == "Delete" || com == "rm") { (new Delete())->run(params, param1, param2); return; }
-	else if (com == "Move" || com == "mv") { (new Move())->run(params, param1, param2); return; }
-	else if (com == "Select" || com == "sl") { (new Select())->run(params, param1, param2); return; }
-	else if (com == "Assign" || com == "as") { (new Assign())->run(params, param1, param2); return; }
-	else if (com == "Help" || com == "h") { (new Help())->run(params, param1, param2); return; }
+	if (com == "MakeDirectory" || com == "mkdir") { MakeDirectory::fetch()->run(params, param1, param2); return; }
+	else if (com == "MakeFile" || com == "mkfile") { MakeFile::fetch()->run(params, param1, param2); return; }
+	else if (com == "ChangeDirectory" || com == "cd") { ChangeDirectory::fetch()->run(params, param1, param2); return; }
+	else if (com == "PrintDirectoryContents" || com == "dir") { PrintDirectoryContents::fetch()->run(params, param1, param2); return; }
+	else if (com == "Copy" || com == "cp") { Copy::fetch()->run(params, param1, param2); return; }
+	else if (com == "Delete" || com == "rm") { Delete::fetch()->run(params, param1, param2); return; }
+	else if (com == "Move" || com == "mv") { Move::fetch()->run(params, param1, param2); return; }
+	else if (com == "Select" || com == "sl") { Select::fetch()->run(params, param1, param2); return; }
+	else if (com == "Assign" || com == "as") { Assign::fetch()->run(params, param1, param2); return; }
+	else if (com == "Help" || com == "h") { Help::fetch()->run(params, param1, param2); return; }
 	else if (com == "Exit" || com == "q") end();
 	else if (com == "") return;
 	else throw new NonExistingCommand();

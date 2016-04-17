@@ -38,6 +38,11 @@ typedef vector<char> chars;
 //int movee=0;
 
 class Move {
+	static Move* move;
+	Move() = default;
+	Move(const Move&) = delete;
+	Move& operator=(const Move&) = delete;
 public:
+	static Move* fetch() { return move; }
 	void run(chars params, string param1, string param2);
 };

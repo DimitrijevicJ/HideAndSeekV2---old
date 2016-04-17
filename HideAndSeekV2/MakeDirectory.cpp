@@ -1,5 +1,7 @@
 #include "MakeDirectory.h"
 
+MakeDirectory* MakeDirectory::makeDirectory = new MakeDirectory();
+
 void MakeDirectory::run(chars params, string param1, string param2) {
 	//mkdir directoryName
 

@@ -34,6 +34,11 @@ using namespace std::experimental::filesystem;
 typedef vector<char> chars;
 
 class Help {
+	static Help* help;
+	Help() = default;
+	Help(const Help&) = delete;
+	Help& operator=(const Help&) = delete;
 public:
+	static Help* fetch() { return help; }
 	void run(chars params, string param1, string param2);
 };

@@ -35,7 +35,12 @@ typedef vector<char> chars;
 extern int movee;
 
 class Delete {
+	static Delete* deletee;
+	Delete() = default;
+	Delete(const Delete&) = delete;
+	Delete& operator=(const Delete&) = delete;
 public:
+	static Delete* fetch() { return deletee; }
 	void run(chars params, string param1, string param2);
 };
 

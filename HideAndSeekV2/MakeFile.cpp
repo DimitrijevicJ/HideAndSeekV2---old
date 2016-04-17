@@ -1,5 +1,7 @@
 #include "MakeFile.h"
 
+MakeFile* MakeFile::makeFile = new MakeFile();
+
 void MakeFile::run(chars params, string param1, string param2) {
 	//mkdir directoryName
 	path pathh;
@@ -10,7 +12,7 @@ void MakeFile::run(chars params, string param1, string param2) {
 	}
 	else pathh = param1;
 	if (!exists(absolute((new File(pathh.parent_path()))->filePath()))) {
-		(new MakeDirectory())->run(params, pathh.parent_path().string(), param2);
+		MakeDirectory::fetch()->run(params, pathh.parent_path().string(), param2);
 	}
 	if (exists(pathh)) {
 		cout << "There already exists a file with such name. Please choose another" << endl; return;

@@ -35,7 +35,12 @@ typedef vector<char> chars;
 extern int movee;
 
 class Copy {
+	static Copy* copy;
+	Copy() = default;
+	Copy(const Copy&) = delete;
+	Copy& operator=(const Copy&) = delete;
 public:
+	static Copy* fetch() { return copy; }
 	void run(chars params, string param1, string param2);
 };
 

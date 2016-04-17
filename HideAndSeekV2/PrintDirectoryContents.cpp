@@ -1,5 +1,7 @@
 #include "PrintDirectoryContents.h"
 
+PrintDirectoryContents* PrintDirectoryContents::printDirectoryContents = new PrintDirectoryContents();
+
 void PrintDirectoryContents::run(chars params, string param1, string param2) {
 	//dir -p ->permissions
 	//dir -a ->all

@@ -1,5 +1,7 @@
 #include "Select.h"
 
+Select* Select::select = new Select();
+
 //Reference : This awesome function has been donated by some brilliant internet user, and I will use this opportunity to thank him
 //http://www.geeksforgeeks.org/wildcard-character-matching/
 bool match(char *first, char * second)
