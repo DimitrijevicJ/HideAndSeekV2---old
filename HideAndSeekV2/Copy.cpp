@@ -1,5 +1,7 @@
 #include "Copy.h"
 
+Copy* Copy::copy = new Copy();
+
 void Copy::run(chars params, string param1, string param2) {
 	path path1, path2; //path1 is what, path2 is where
 	int is_simbolic = 0;
@@ -69,7 +71,7 @@ void Copy::run(chars params, string param1, string param2) {
 		}
 	}
 	if (!exists(absolute(fileWhere.path().parent_path()))) {
-		(new MakeDirectory())->run(params, fileWhere.path().parent_path().string(), param2);
+		MakeDirectory::fetch()->run(params, fileWhere.path().parent_path().string(), param2);
 	}
 	if (params.size() > 0 && params[0] == 'd') {
 		std::experimental::filesystem::copy(fileWhat, fileWhere, copy_options::directories_only);

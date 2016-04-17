@@ -1,5 +1,7 @@
 #include "ChangeDirectory.h"
 
+ChangeDirectory* ChangeDirectory::changeDirectory = new ChangeDirectory();
+
 void ChangeDirectory::run(chars params, string param1, string param2) {
 		path pathh;
 		if (Aliases::fetchAliases()->fetchMap().count(param1))

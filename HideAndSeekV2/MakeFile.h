@@ -34,7 +34,12 @@ using namespace std::experimental::filesystem;
 typedef vector<char> chars;
 
 class MakeFile {
+	static MakeFile* makeFile;
+	MakeFile() = default;
+	MakeFile(const MakeFile&) = delete;
+	MakeFile& operator=(const MakeFile&) = delete;
 public:
+	static MakeFile* fetch() { return makeFile; }
 	void run(chars params, string param1, string param2);
 };
 

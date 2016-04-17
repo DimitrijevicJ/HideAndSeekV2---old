@@ -1,5 +1,7 @@
 #include "Delete.h"
 
+Delete* Delete::deletee = new Delete();
+
 void Delete::run(chars params, string param1, string param2) {
 
 	directory_entry file(param1);

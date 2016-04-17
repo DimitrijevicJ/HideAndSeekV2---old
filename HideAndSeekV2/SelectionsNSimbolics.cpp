@@ -38,7 +38,7 @@ void Selection::copySelection() {
 	SelElem* current = first;
 	while (current) {
 		chars params;
-		(new Copy())->run(params, current->elem->filePath().string(), current_path().string());
+		Copy::fetch()->run(params, current->elem->filePath().string(), current_path().string());
 		current = current->next;
 	}
 }
@@ -71,7 +71,7 @@ void Selections::saveSelections(path pathh) {
 	selectionsList* current = selections;
 	fstream file;
 	chars params(0);
-	(new MakeFile())->run(params, pathh.string(), "");
+	MakeFile::fetch()->run(params, pathh.string(), "");
 	file.open(pathh.string().c_str(), std::fstream::out);
 	while (current)
 	{
@@ -144,7 +144,7 @@ void Simbolics::loadSimbolic(path pathh) {
 void Simbolics::saveASimbolic(path pathh) {
 	fstream file;
 	chars params(0);
-	(new MakeFile())->run(params, pathh.string(), "");
+	MakeFile::fetch()->run(params, pathh.string(), "");
 	file.open(pathh.string().c_str(), std::fstream::out);
 	for (auto& a : map) {
 		file << a.first << " " << a.second->fetchName() << "\n";

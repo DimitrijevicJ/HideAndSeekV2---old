@@ -33,7 +33,7 @@ void Aliases::loadAlias(path pathh) {
 void Aliases::saveAlias(path pathh) {
 	fstream file;
 	chars params(0);
-	(new MakeFile())->run(params, pathh.string(), "");
+	MakeFile::fetch()->run(params, pathh.string(), "");
 	file.open(pathh.string().c_str(), std::fstream::out);
 	for (auto& alias : map) {
 		file << alias.first << " " << alias.second->filePath() << "\n";

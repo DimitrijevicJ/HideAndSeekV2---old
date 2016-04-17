@@ -34,6 +34,11 @@ using namespace std::experimental::filesystem;
 typedef vector<char> chars;
 
 class ChangeDirectory {
+	static ChangeDirectory* changeDirectory;
+	ChangeDirectory() = default;
+	ChangeDirectory(const ChangeDirectory&) = delete;
+	ChangeDirectory& operator=(const ChangeDirectory&) = delete;
 public:
+	static ChangeDirectory* fetch() { return changeDirectory; }
 	void run(chars params, string param1, string param2);
 };

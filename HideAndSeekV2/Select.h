@@ -34,6 +34,11 @@ using namespace std::experimental::filesystem;
 typedef vector<char> chars;
 
 class Select {
+	static Select* select;
+	Select() = default;
+	Select(const Select&) = delete;
+	Select& operator=(const Select&) = delete;
 public:
+	static Select* fetch() { return select; }
 	void run(chars params, string param1, string param2);
 };

@@ -33,7 +33,12 @@ using namespace std::experimental::filesystem;
 typedef vector<char> chars;
 
 class MakeDirectory {
+	static MakeDirectory* makeDirectory;
+	MakeDirectory() = default;
+	MakeDirectory(const MakeDirectory&) = delete;
+	MakeDirectory& operator=(const MakeDirectory&) = delete;
 public:
+	static MakeDirectory* fetch() { return makeDirectory; }
 	void run(chars params, string param1, string param2);
 };
 
