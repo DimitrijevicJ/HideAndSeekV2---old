@@ -1,4 +1,22 @@
 #include "Command.h"
+#include "ColorMe.h"
+#include "Aliases.h"
+#include "Assign.h"
+#include "ChangeDirectory.h"
+#include "Copy.h"
+#include "Exceptions.h"
+#include "Help.h"
+#include "MakeDirectory.h"
+#include "MakeFile.h"
+#include "Delete.h"
+#include "Move.h"
+#include "PrintDirectoryContents.h"
+#include "Select.h"
+#include "SelectionsNSimbolics.h"
+#include "StartNFinish.h"
+#include "File.h"
+
+Commands* Commands::commands = new Commands();
 
 void Command::parseCommand(string command) {
 	istringstream parser(command);
@@ -17,17 +35,15 @@ void Command::parseCommand(string command) {
 		}
 	}
 	params.resize(numParams);
-	if (com == "MakeDirectory" || com == "mkdir") { MakeDirectory::fetch()->run(params, param1, param2); return; }
-	else if (com == "MakeFile" || com == "mkfile") { MakeFile::fetch()->run(params, param1, param2); return; }
-	else if (com == "ChangeDirectory" || com == "cd") { ChangeDirectory::fetch()->run(params, param1, param2); return; }
-	else if (com == "PrintDirectoryContents" || com == "dir") { PrintDirectoryContents::fetch()->run(params, param1, param2); return; }
-	else if (com == "Copy" || com == "cp") { Copy::fetch()->run(params, param1, param2); return; }
-	else if (com == "Delete" || com == "rm") { Delete::fetch()->run(params, param1, param2); return; }
-	else if (com == "Move" || com == "mv") { Move::fetch()->run(params, param1, param2); return; }
-	else if (com == "Select" || com == "sl") { Select::fetch()->run(params, param1, param2); return; }
-	else if (com == "Assign" || com == "as") { Assign::fetch()->run(params, param1, param2); return; }
-	else if (com == "Help" || com == "h") { Help::fetch()->run(params, param1, param2); return; }
-	else if (com == "Exit" || com == "q") end();
-	else if (com == "") return;
-	else throw new NonExistingCommand();
+
+	if (Commands::fetch()->fetchMap().count(com)==0) {
+		if (com == "") return;
+		throw new NonExistingCommand();
+	}
+	else {
+
+		Command* comm = Commands::fetch()->fetchMap().at(com);
+		comm->run(params, param1, param2);
+		return;
+	}
 }

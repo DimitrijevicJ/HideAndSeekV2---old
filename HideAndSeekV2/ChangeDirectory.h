@@ -33,12 +33,13 @@ using namespace std::experimental::filesystem;
 
 typedef vector<char> chars;
 
-class ChangeDirectory {
+class ChangeDirectory : public Command{
 	static ChangeDirectory* changeDirectory;
 	ChangeDirectory() = default;
 	ChangeDirectory(const ChangeDirectory&) = delete;
 	ChangeDirectory& operator=(const ChangeDirectory&) = delete;
 public:
+	int getPriviledge() override { return 1; }
 	static ChangeDirectory* fetch() { return changeDirectory; }
 	void run(chars params, string param1, string param2);
 };

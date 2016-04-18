@@ -34,7 +34,7 @@ typedef vector<char> chars;
 
 extern int movee;
 
-class Copy {
+class Copy : public Command {
 	static Copy* copy;
 	Copy() = default;
 	Copy(const Copy&) = delete;

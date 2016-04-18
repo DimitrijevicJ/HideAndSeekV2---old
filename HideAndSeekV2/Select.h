@@ -33,7 +33,7 @@ using namespace std::experimental::filesystem;
 
 typedef vector<char> chars;
 
-class Select {
+class Select : public Command{
 	static Select* select;
 	Select() = default;
 	Select(const Select&) = delete;

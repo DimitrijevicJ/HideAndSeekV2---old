@@ -37,7 +37,7 @@ typedef vector<char> chars;
 //As move option has been implemented as copy+delete, there has to be a way to tell copy and delete commands that they are moving
 //int movee=0;
 
-class Move {
+class Move : public Command {
 	static Move* move;
 	Move() = default;
 	Move(const Move&) = delete;

@@ -1,6 +1,20 @@
 #include "StartNFinish.h"
 
 void start() {
+	unordered_map<string, Command*> mapa;
+	mapa.insert({"mkfile", MakeFile::fetch()});
+	mapa.insert({ "mkdir", MakeDirectory::fetch() });
+	mapa.insert({ "mkfile", MakeFile::fetch() });
+	mapa.insert({ "as", Assign::fetch() });
+	mapa.insert({ "cd", ChangeDirectory::fetch() });
+	mapa.insert({ "cp", Copy::fetch() });
+	mapa.insert({ "rm", Delete::fetch() });
+	mapa.insert({ "h", Help::fetch() });
+	mapa.insert({ "mv", Move::fetch() });
+	mapa.insert({ "dir", PrintDirectoryContents::fetch() });
+	mapa.insert({ "sl", Select::fetch() });
+
+	Commands::fetch()->fetchMap() = mapa;
 	colorMe(COLOR_SILVER);
 	cout << "Do you have any simbolic names and selections you would like to load? (YES/NO)" << endl;
 	string answer;

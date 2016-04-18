@@ -38,7 +38,7 @@ class Aliases {
 	mapsA map;
 public:
 	static Aliases* fetchAliases() { return AliasesMap; }
-	mapsA fetchMap() { return map; }
+	mapsA& fetchMap() { return map; }
 	void addAlias(string alias, File* object);
 	File* findObject(string al);
 	void removeAlias(string al) { map.erase(al); }

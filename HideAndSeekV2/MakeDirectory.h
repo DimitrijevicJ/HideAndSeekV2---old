@@ -32,7 +32,8 @@ using namespace std::experimental::filesystem;
 
 typedef vector<char> chars;
 
-class MakeDirectory {
+
+class MakeDirectory : public Command{
 	static MakeDirectory* makeDirectory;
 	MakeDirectory() = default;
 	MakeDirectory(const MakeDirectory&) = delete;

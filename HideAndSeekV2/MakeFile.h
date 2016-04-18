@@ -33,7 +33,7 @@ using namespace std::experimental::filesystem;
 
 typedef vector<char> chars;
 
-class MakeFile {
+class MakeFile : public Command{
 	static MakeFile* makeFile;
 	MakeFile() = default;
 	MakeFile(const MakeFile&) = delete;

@@ -34,7 +34,7 @@ typedef vector<char> chars;
 
 extern int movee;
 
-class Delete {
+class Delete : public Command {
 	static Delete* deletee;
 	Delete() = default;
 	Delete(const Delete&) = delete;

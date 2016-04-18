@@ -34,12 +34,13 @@ using namespace std::experimental::filesystem;
 
 typedef vector<char> chars;
 
-class PrintDirectoryContents {
+class PrintDirectoryContents : public Command{
 	static PrintDirectoryContents* printDirectoryContents;
 	PrintDirectoryContents() = default;
 	PrintDirectoryContents(const PrintDirectoryContents&) = delete;
 	PrintDirectoryContents& operator=(const PrintDirectoryContents&) = delete;
 public:
+	int getPriviledge() override { return 1; }
 	static PrintDirectoryContents* fetch() { return printDirectoryContents; }
 	void run(chars params, string param1, string param2);
 private:
