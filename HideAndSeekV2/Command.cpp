@@ -15,6 +15,8 @@
 #include "SelectionsNSimbolics.h"
 #include "StartNFinish.h"
 #include "File.h"
+#include "Quit.h"
+#include "User.h"
 
 Commands* Commands::commands = new Commands();
 
@@ -43,7 +45,8 @@ void Command::parseCommand(string command) {
 	else {
 
 		Command* comm = Commands::fetch()->fetchMap().at(com);
-		comm->run(params, param1, param2);
+		if(User::fetchUser()->fetchMode()==0 || (comm->getPriviledge()==User::fetchUser()->fetchMode())) comm->run(params, param1, param2);
+		else cout << "You don't have priviledges to execute that command." << endl;
 		return;
 	}
 }

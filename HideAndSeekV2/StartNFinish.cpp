@@ -61,6 +61,8 @@ void freeMemory() {
 	Quit::cleanUp();
 	Select::cleanUp();
 	Simbolics::cleanUp();
+
+	User::cleanUp();
 }
 
 void end() {

@@ -25,12 +25,18 @@
 #include "SelectionsNSimbolics.h"
 #include "StartNFinish.h"
 #include "File.h"
+#include "Quit.h"
+#include "User.h"
 
 using namespace std;
 using namespace std::experimental::filesystem;
 
-int main()
+int main(int argc, char* argv[])
 {
+	if (argc == 2) {
+		if (string(argv[1]) == "password") User::fetchUser()->changeUserMode();
+	}
+	
 	start();
 	while (1) {
 		try {

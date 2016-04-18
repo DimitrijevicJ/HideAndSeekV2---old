@@ -160,6 +160,7 @@
     <ClInclude Include="Select.h" />
     <ClInclude Include="SelectionsNSimbolics.h" />
     <ClInclude Include="StartNFinish.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aliases.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="Select.cpp" />
     <ClCompile Include="SelectionsNSimbolics.cpp" />
     <ClCompile Include="StartNFinish.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="Work.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
