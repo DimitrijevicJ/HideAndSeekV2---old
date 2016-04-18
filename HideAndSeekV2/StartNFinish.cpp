@@ -1,21 +1,23 @@
 #include "StartNFinish.h"
 
-void start() {
-	unordered_map<string, Command*> mapa;
-	mapa.insert({"mkfile", MakeFile::fetch()});
-	mapa.insert({ "mkdir", MakeDirectory::fetch() });
-	mapa.insert({ "mkfile", MakeFile::fetch() });
-	mapa.insert({ "as", Assign::fetch() });
-	mapa.insert({ "cd", ChangeDirectory::fetch() });
-	mapa.insert({ "cp", Copy::fetch() });
-	mapa.insert({ "rm", Delete::fetch() });
-	mapa.insert({ "h", Help::fetch() });
-	mapa.insert({ "mv", Move::fetch() });
-	mapa.insert({ "dir", PrintDirectoryContents::fetch() });
-	mapa.insert({ "sl", Select::fetch() });
-	mapa.insert({ "q", Quit::fetch() });
+void addCommands() {
+	Commands::fetch()->fetchMap().insert({ "mkfile", MakeFile::fetch() });
+	Commands::fetch()->fetchMap().insert({ "mkdir", MakeDirectory::fetch() });
+	Commands::fetch()->fetchMap().insert({ "mkfile", MakeFile::fetch() });
+	Commands::fetch()->fetchMap().insert({ "as", Assign::fetch() });
+	Commands::fetch()->fetchMap().insert({ "cd", ChangeDirectory::fetch() });
+	Commands::fetch()->fetchMap().insert({ "cp", Copy::fetch() });
+	Commands::fetch()->fetchMap().insert({ "rm", Delete::fetch() });
+	Commands::fetch()->fetchMap().insert({ "h", Help::fetch() });
+	Commands::fetch()->fetchMap().insert({ "mv", Move::fetch() });
+	Commands::fetch()->fetchMap().insert({ "dir", PrintDirectoryContents::fetch() });
+	Commands::fetch()->fetchMap().insert({ "sl", Select::fetch() });
+	Commands::fetch()->fetchMap().insert({ "q", Quit::fetch() });
+}
 
-	Commands::fetch()->fetchMap() = mapa;
+void start() {
+	addCommands();
+
 	colorMe(COLOR_SILVER);
 	cout << "Do you have any simbolic names and selections you would like to load? (YES/NO)" << endl;
 	string answer;
@@ -45,6 +47,22 @@ void start() {
 	cin.ignore();
 }
 
+void freeMemory() {
+	Aliases::cleanUp();
+	Assign::cleanUp();
+	ChangeDirectory::cleanUp();
+	Copy::cleanUp();
+	Delete::cleanUp();
+	Help::cleanUp();
+	MakeDirectory::cleanUp();
+	MakeFile::cleanUp();
+	Move::cleanUp();
+	PrintDirectoryContents::cleanUp();
+	Quit::cleanUp();
+	Select::cleanUp();
+	Simbolics::cleanUp();
+}
+
 void end() {
 	colorMe(COLOR_SILVER);
 	cout << "Would you like to save your simbolics and selections?" << endl;
@@ -69,5 +87,6 @@ void end() {
 		Aliases::fetchAliases()->saveAlias(pathSelections);
 	}
 	
+	freeMemory();
 	exit(0);
 }

@@ -81,4 +81,5 @@ public:
 	void removeSimbolic(string al);
 	void loadSimbolic(path pathh);
 	void saveASimbolic(path pathh);
+	static void cleanUp() { delete SimbolicsMap; SimbolicsMap = nullptr; }
 };

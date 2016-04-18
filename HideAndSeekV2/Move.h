@@ -46,4 +46,5 @@ class Move : public Command {
 public:
 	static Move* fetch() { return move; }
 	void run(chars params, string param1, string param2);
+	static void cleanUp() { delete move; move = nullptr; }
 };

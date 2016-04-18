@@ -43,5 +43,6 @@ class Delete : public Command {
 public:
 	static Delete* fetch() { return deletee; }
 	void run(chars params, string param1, string param2);
+	static void cleanUp() { delete deletee; deletee = nullptr; }
 };
 

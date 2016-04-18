@@ -45,4 +45,5 @@ public:
 	void removeAlias(string al) { map.erase(al); }
 	void loadAlias(path pathh);
 	void saveAlias(path pathh);
+	static void cleanUp() { delete AliasesMap; AliasesMap = nullptr; }
 };

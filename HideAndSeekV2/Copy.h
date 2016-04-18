@@ -43,7 +43,7 @@ class Copy : public Command {
 public:
 	static Copy* fetch() { return copy; }
 	void run(chars params, string param1, string param2);
-	~Copy() { cout << "Delete" << endl; delete copy; copy = nullptr; }
+	static void cleanUp() { delete copy; copy = nullptr; }
 };
 
 

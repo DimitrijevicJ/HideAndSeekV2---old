@@ -52,4 +52,5 @@ class Commands {
 public:
 	static Commands* fetch() { return commands; }
 	mapsC& fetchMap() { return map; }
+	static void cleanUp() { delete commands; commands = nullptr; }
 };
