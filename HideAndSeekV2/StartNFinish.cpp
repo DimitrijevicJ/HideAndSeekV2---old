@@ -13,6 +13,7 @@ void start() {
 	mapa.insert({ "mv", Move::fetch() });
 	mapa.insert({ "dir", PrintDirectoryContents::fetch() });
 	mapa.insert({ "sl", Select::fetch() });
+	mapa.insert({ "q", Quit::fetch() });
 
 	Commands::fetch()->fetchMap() = mapa;
 	colorMe(COLOR_SILVER);
@@ -67,6 +68,6 @@ void end() {
 		path pathSelections = answer;
 		Aliases::fetchAliases()->saveAlias(pathSelections);
 	}
-
+	
 	exit(0);
 }

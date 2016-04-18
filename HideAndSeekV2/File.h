@@ -26,6 +26,7 @@
 #include "Select.h"
 #include "SelectionsNSimbolics.h"
 #include "StartNFinish.h"
+#include "Quit.h"
 
 using namespace std;
 using namespace std::experimental::filesystem;

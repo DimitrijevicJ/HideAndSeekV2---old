@@ -26,6 +26,7 @@
 #include "SelectionsNSimbolics.h"
 #include "StartNFinish.h"
 #include "File.h"
+#include "Quit.h"
 
 using namespace std;
 using namespace std::experimental::filesystem;
@@ -42,6 +43,7 @@ class Copy : public Command {
 public:
 	static Copy* fetch() { return copy; }
 	void run(chars params, string param1, string param2);
+	~Copy() { cout << "Delete" << endl; delete copy; copy = nullptr; }
 };
 
 

@@ -156,6 +156,7 @@
     <ClInclude Include="MakeFile.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="PrintDirectoryContents.h" />
+    <ClInclude Include="Quit.h" />
     <ClInclude Include="Select.h" />
     <ClInclude Include="SelectionsNSimbolics.h" />
     <ClInclude Include="StartNFinish.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Delete.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="PrintDirectoryContents.cpp" />
+    <ClCompile Include="Quit.cpp" />
     <ClCompile Include="Select.cpp" />
     <ClCompile Include="SelectionsNSimbolics.cpp" />
     <ClCompile Include="StartNFinish.cpp" />
