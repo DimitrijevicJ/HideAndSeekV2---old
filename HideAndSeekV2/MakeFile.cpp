@@ -15,7 +15,10 @@ void MakeFile::run(chars params, string param1, string param2) {
 		MakeDirectory::fetch()->run(params, pathh.parent_path().string(), param2);
 	}
 	if (exists(pathh)) {
-		cout << "There already exists a file with such name. Please choose another" << endl; return;
+		cout << "There already exists a file with such name. Do you want to overwrite? Yes/No" << endl;
+		string answer;
+		cin >> answer;
+		if(answer=="NO"||answer=="no"||answer=="n") return;
 	}
 	ofstream ofstr(pathh);
 	cout << "Created file " << param1 << endl;

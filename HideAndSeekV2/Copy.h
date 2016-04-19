@@ -35,11 +35,16 @@ typedef vector<char> chars;
 
 extern int movee;
 
+class Selection;
+
 class Copy : public Command {
 	static Copy* copy;
 	Copy() = default;
 	Copy(const Copy&) = delete;
 	Copy& operator=(const Copy&) = delete;
+	
+	void aliasCheck(string*, string*);
+	Selection* simbolicsNSelectionsCheck(string);
 public:
 	static Copy* fetch() { return copy; }
 	void run(chars params, string param1, string param2);

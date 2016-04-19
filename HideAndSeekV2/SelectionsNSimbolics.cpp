@@ -34,11 +34,11 @@ void Selection::deleteSelection() {
 	first = nullptr;
 }
 
-void Selection::copySelection() {
+void Selection::copySelection(string where) {
 	SelElem* current = first;
 	while (current) {
-		chars params;
-		Copy::fetch()->run(params, current->elem->filePath().string(), current_path().string());
+		chars params(1); params[0] = 'r';
+		Copy::fetch()->run(params, current->elem->filePath().string(), where+"/"+current->elem->filePath().filename().string());
 		current = current->next;
 	}
 }
@@ -50,6 +50,7 @@ Selection* Selections::findSelection(string sl) {
 		if (current->selection->fetchName() == sl) break;
 		current = current->next;
 	}
+	if (current == nullptr) return nullptr;
 	return current->selection;
 }
 
@@ -94,14 +95,15 @@ void Selections::loadSelections(path pathh) {
 	getline(file, word);
 	while (word != "")
 	{
-		word.erase(word.length() - 1, 1);
 		if (word[0] == '*') {
 			selectionName = word.erase(0, 1);
+			if (Simbolics::fetchSimbolics()->findObject(selectionName) == nullptr)
+				Selections::addSelection(new Selection(selectionName));
 		}
 		else {
-			selection = Simbolics::fetchSimbolics()->findObject(selectionName);
 			word.erase(0, 1);
-			if(exists(word)) (*selection) += new File(word.erase(0, 1));
+			selection = Selections::findSelection(selectionName);
+			if(exists(word)) (*selection) += new File(word);
 		}
 		getline(file, word);
 	}
@@ -135,7 +137,9 @@ void Simbolics::loadSimbolic(path pathh) {
 		else {
 			selectionName = readWord;
 			word = 2;
-			map.insert({ simbolicName, new Selection(selectionName) });
+			Selection* selection = new Selection(selectionName);
+			Selections::addSelection(selection);
+			map.insert({ simbolicName, selection });
 		}
 	}
 	file.close();
