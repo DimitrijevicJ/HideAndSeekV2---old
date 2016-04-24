@@ -13,5 +13,5 @@ void Assign::run(chars& params, string param1, string param2) {
 		cout << "Added simbolic name : " << param1 << endl;
 		return;
 	}
-	else throw new NonExistingOption();
+	else throw NonExistingOption();
 }

@@ -40,7 +40,7 @@ void Copy::copyDirectory(string what, string where, chars& params) {
 			countCopied++; 
 		}
 	}
-	else throw new NonExistingOption();
+	else throw NonExistingOption();
 
 	if (movee) cout << "Files moved : " << countCopied << endl;
 	else cout << "Files copied : " << countCopied << endl;
@@ -51,7 +51,7 @@ void Copy::run(chars& params, string param1, string param2) {
 	path path1, path2; //path1 is what, path2 is where
 	Selection* select = nullptr;
 
-	if (param2 == ""||param1=="") throw new MissingOperands();
+	if (param2 == ""||param1=="") throw MissingOperands();
 	
 	//check for aliases
 	aliasCheck(&param1, &param2);
@@ -116,7 +116,7 @@ void Copy::run(chars& params, string param1, string param2) {
 	}
 	else if (!is_directory(fileWhere)) {
 		//directory->file
-		if (is_directory(fileWhat)) throw new CopyDirectoryToFileError();
+		if (is_directory(fileWhat)) throw CopyDirectoryToFileError();
 		else {
 			//file->file
 			if (exists(fileWhere)) {
@@ -137,7 +137,7 @@ fail:					char answer;
 					}
 					case 'S': {break; }
 					case 'K': {params.resize(2, 'K'); if (params[0] == 'K') params[0] = 'd'; break; }
-					case 'B': {throw new AbortCopyCommand(); }
+					case 'B': {throw AbortCopyCommand(); }
 					default: {cout << "Error. Please try again.\n"; goto fail; }
 					}
 				}

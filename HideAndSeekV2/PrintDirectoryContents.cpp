@@ -16,7 +16,7 @@ void PrintDirectoryContents::run(chars& params, string param1, string param2) {
 		case 'p': {options |= 0x1; break; }
 		case 's': {options |= 0x2; break; }
 		case 'd': {options |= 0x4; break; }
-		default: {throw new NonExistingOption(); }
+		default: {throw NonExistingOption(); }
 		}
 	}
 
