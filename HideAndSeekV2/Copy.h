@@ -45,6 +45,7 @@ class Copy : public Command {
 	
 	void aliasCheck(string*, string*);
 	Selection* simbolicsNSelectionsCheck(string);
+	void Copy::copyDirectory(string, string, chars);
 public:
 	static Copy* fetch() { return copy; }
 	void run(chars params, string param1, string param2);
