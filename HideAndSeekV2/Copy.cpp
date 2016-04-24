@@ -23,9 +23,35 @@ Selection* Copy::simbolicsNSelectionsCheck(string what) {
 	return select;
 }
 
-void Copy::run(chars params, string param1, string param2) {
+void Copy::copyDirectory(string what, string where, chars& params) {
+	//don't like it fix it
+	int countCopied = 1;
+	if (params.size()==0 || (params.size()==1 && params[0] == 'd')) {
+		//NO std::experimental::filesystem::copy(what, where, copy_options::directories_only);
+		for (auto p : recursive_directory_iterator(what)) { 
+			if (is_directory(p)) Copy::run(params, absolute(p).string(), where);
+			countCopied++; 
+		}
+	}
+	else if (params.size()==1 &&  params[0] == 'r') {
+		//std::experimental::filesystem::copy(what, where, copy_options::recursive);
+		for (auto p : recursive_directory_iterator(what)) { 
+			run(params, absolute(p).string(), where);
+			countCopied++; 
+		}
+	}
+	else throw NonExistingOption();
+
+	if (movee) cout << "Files moved : " << countCopied << endl;
+	else cout << "Files copied : " << countCopied << endl;
+	return;
+}
+
+void Copy::run(chars& params, string param1, string param2) {
 	path path1, path2; //path1 is what, path2 is where
 	Selection* select = nullptr;
+
+	if (param2 == ""||param1=="") throw MissingOperands();
 	
 	//check for aliases
 	aliasCheck(&param1, &param2);
@@ -38,7 +64,7 @@ void Copy::run(chars params, string param1, string param2) {
 	select = simbolicsNSelectionsCheck(param1);
 	if (select) {
 		//selection to be copied
-		select->copySelection(param2);
+		select->copySelection(param2,params);
 		return;
 	}
 	
@@ -51,44 +77,6 @@ void Copy::run(chars params, string param1, string param2) {
 		cout << "File you are trying to copy doesn't exist" << endl; return;
 	}
 
-	int i = 1;
-	//destination directory exists
-	if (exists(fileWhere)) {
-		if (is_directory(fileWhere)) {
-			//copying something to a directory
-			string par = absolute(fileWhat.path()).string();
-			directory_entry oldDir(current_path());
-			current_path(fileWhere);
-			if (!is_directory(par)) {
-				//something is a file
-				Copy::fetch()->run(params, par, fileWhat.path().filename().string());
-			}
-			else {
-				//Something is a directory
-				for (auto& p : directory_iterator(par)) {
-					if (p != fileWhat) Copy::fetch()->run(params, p.path().string(), p.path().filename().string());
-				}
-			}
-			current_path(oldDir);
-			return;
-		}
-		else {
-			while (exists(fileWhere))
-			{
-				char buffer[10];
-				_itoa(i++, buffer, 10);
-				param2.insert(param2.find_last_of('.'), buffer);
-				if (Aliases::fetchAliases()->fetchMap().count(param2))
-				{
-					File* file = Aliases::fetchAliases()->findObject(param2);
-					path2 = file->filePath();
-				}
-				else path2 = param2;
-				fileWhere.assign(path2);
-			}
-		}
-	}
-
 	//not existing directory where we are trying to copy a file 
 	//cp x.gif Milan/x.gif		Milan/ doesn't exist
 	//we make Milan directory
@@ -96,21 +84,75 @@ void Copy::run(chars params, string param1, string param2) {
 		MakeDirectory::fetch()->run(params, fileWhere.path().parent_path().string(), param2);
 	}
 
+	if (exists(fileWhere)&&is_directory(fileWhere)) {
+		//->directory
+		string rootToCopy = absolute(fileWhere).string() + '/';
+		if (!is_directory(fileWhat)) {
+			//file->directory
+			std::experimental::filesystem::copy(fileWhat, rootToCopy+fileWhat.path().filename().string());
+		}
+		else {
+			//directory->directory
+			//copying directory contents to another directory
+			directory_entry fileWhat(fileWhat);
+			string where = fileWhere.path().string().append("/" + fileWhat.path().filename().string());
+			MakeDirectory::fetch()->run(params, where, "");
+			copyDirectory(fileWhat.path().string(), where, params);
+		}
+	}
+	else if (!exists(fileWhere)) {
+		if (is_directory(fileWhat))
+		{
+			//directory->
+			string where = fileWhere.path().string();
+			MakeDirectory::fetch()->run(params, where, "");
+			copyDirectory(fileWhat.path().string(), where, params);
+		}
+		else {
+			//file->
+			std::experimental::filesystem::copy(fileWhat, fileWhere);
+			std::cout<<"Files copied : 1"<<endl;
+		}
+	}
+	else if (!is_directory(fileWhere)) {
+		//directory->file
+		if (is_directory(fileWhat)) throw CopyDirectoryToFileError();
+		else {
+			//file->file
+			if (exists(fileWhere)) {
+				if (params.size() == 1||params.size()==0) {
+					printCopyOptions();
+fail:					char answer;
+					cin >> answer;
+					switch (answer) {
+					case 'Y': {
+						std::experimental::filesystem::copy(fileWhat, fileWhere,copy_options::overwrite_existing);
+						std::cout << "Files copied : 1" << endl; break;
+					}
+					case 'A': {
+						std::experimental::filesystem::copy(fileWhat, fileWhere,copy_options::overwrite_existing);
+						std::cout << "Files copied : 1" << endl;
+						params.resize(2, 'A');
+						if (params[0] == 'A') params[0] = 'd'; break;
+					}
+					case 'S': {break; }
+					case 'K': {params.resize(2, 'K'); if (params[0] == 'K') params[0] = 'd'; break; }
+					case 'B': {throw AbortCopyCommand(); }
+					default: {cout << "Error. Please try again.\n"; goto fail; }
+					}
+				}
+				else //already known decision
+				{
+					if (params.size() == 2 && params[1] == 'A') {
+						std::experimental::filesystem::copy(fileWhat, fileWhere,copy_options::overwrite_existing);
+						std::cout << "Files copied : 1" << endl;
+					}
+				}
+			}
+		}
+	}
+}
 
-	if (params.size() > 0 && params[0] == 'd') {
-		std::experimental::filesystem::copy(fileWhat, fileWhere, copy_options::directories_only);
-		int countCopied = 1;
-		for (auto p : directory_iterator(fileWhere)) { countCopied++; }
-		cout << "Files copied : " << countCopied << endl;
-		return;
-	}
-	else if (params.size() == 0 || params[0] == 'r') {
-		std::experimental::filesystem::copy(fileWhat, fileWhere, copy_options::recursive);
-		int countCopied = 1;
-		for (auto p : recursive_directory_iterator(fileWhere)) { countCopied++; }
-		if (movee) cout << "Files moved : " << countCopied << endl;
-		else cout << "Files copied : " << countCopied << endl;
-		return;
-	}
-	else throw new NonExistingOption();
+void Copy::printCopyOptions() {
+	cout << "Yes - Y\nYes All - A\nSkip - S\nSkip All - K\nAbort - B\n";
 }

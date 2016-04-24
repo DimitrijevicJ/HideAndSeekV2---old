@@ -41,6 +41,6 @@ class Select : public Command{
 	Select& operator=(const Select&) = delete;
 public:
 	static Select* fetch() { return select; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete select; select = nullptr; }
 };

@@ -47,6 +47,7 @@ int main(int argc, char* argv[])
 			getline(cin, command);
 			Command::parseCommand(command);
 		}
+		catch (AbortCopyCommand& except) {}
 		catch (exception& except) {
 			colorMe(COLOR_FUCHSIA);
 			cout << except.what() << endl;

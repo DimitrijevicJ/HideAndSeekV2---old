@@ -42,6 +42,6 @@ class ChangeDirectory : public Command{
 public:
 	int getPriviledge() override { return 1; }
 	static ChangeDirectory* fetch() { return changeDirectory; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete changeDirectory; changeDirectory = nullptr; }
 };

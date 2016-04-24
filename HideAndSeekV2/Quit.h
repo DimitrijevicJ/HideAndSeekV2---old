@@ -41,6 +41,6 @@ class Quit : public Command {
 public:
 	int getPriviledge() override { return 1; }
 	static Quit* fetch() { return quit; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete quit; quit = nullptr; }
 };

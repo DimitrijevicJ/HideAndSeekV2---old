@@ -15,3 +15,18 @@ class NonExistingCommand : public exception {
 public:
 	const char* what(); 
 };
+class CopyDirectoryToFileError : public exception {
+public:
+	const char* what();
+};
+class AbortCopyCommand : public exception {
+public:
+	const char* what();
+};
+class MissingOperands : public exception {
+public:
+	const char* what();
+};
+
+
+

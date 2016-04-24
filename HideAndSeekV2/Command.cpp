@@ -40,7 +40,7 @@ void Command::parseCommand(string command) {
 
 	if (Commands::fetch()->fetchMap().count(com)==0) {
 		if (com == "") return;
-		throw new NonExistingCommand();
+		throw NonExistingCommand();
 	}
 	else {
 
