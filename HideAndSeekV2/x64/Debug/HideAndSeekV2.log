@@ -1,0 +1,55 @@
+﻿Build started 4/24/2016 7:47:52 PM.
+     1>Project "C:\Users\Jovana\Documents\GitHub\HSV2-old\HideAndSeekV2\HideAndSeekV2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt Aliases.cpp Assign.cpp ChangeDirectory.cpp Command.cpp Copy.cpp Exceptions.cpp Help.cpp MakeDirectory.cpp MakeFile.cpp Delete.cpp Move.cpp PrintDirectoryContents.cpp Quit.cpp Select.cpp SelectionsNSimbolics.cpp SetTimeStamp.cpp StartNFinish.cpp User.cpp Work.cpp
+         Work.cpp
+     1>c:\users\jovana\documents\github\hsv2-old\hideandseekv2\work.cpp(50): warning C4101: 'except': unreferenced local variable
+         User.cpp
+         StartNFinish.cpp
+         SetTimeStamp.cpp
+         SelectionsNSimbolics.cpp
+         Select.cpp
+         Quit.cpp
+         PrintDirectoryContents.cpp
+     1>c:\users\jovana\documents\github\hsv2-old\hideandseekv2\printdirectorycontents.cpp(39): warning C4996: 'asctime': This function or variable may be unsafe. Consider using asctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\time.h(116): note: see declaration of 'asctime'
+     1>c:\users\jovana\documents\github\hsv2-old\hideandseekv2\printdirectorycontents.cpp(39): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\time.h(505): note: see declaration of 'localtime'
+         Move.cpp
+         Delete.cpp
+         MakeFile.cpp
+         MakeDirectory.cpp
+         Help.cpp
+         Exceptions.cpp
+         Copy.cpp
+         Command.cpp
+         ChangeDirectory.cpp
+         Assign.cpp
+         Aliases.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jovana\Documents\GitHub\HSV2-old\x64\Debug\HideAndSeekV2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Jovana\Documents\GitHub\HSV2-old\x64\Debug\HideAndSeekV2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jovana\Documents\GitHub\HSV2-old\x64\Debug\HideAndSeekV2.lib" /MACHINE:X64 x64\Debug\Aliases.obj
+         x64\Debug\Assign.obj
+         x64\Debug\ChangeDirectory.obj
+         x64\Debug\Command.obj
+         x64\Debug\Copy.obj
+         x64\Debug\Exceptions.obj
+         x64\Debug\Help.obj
+         x64\Debug\MakeDirectory.obj
+         x64\Debug\MakeFile.obj
+         x64\Debug\Delete.obj
+         x64\Debug\Move.obj
+         x64\Debug\PrintDirectoryContents.obj
+         x64\Debug\Quit.obj
+         x64\Debug\Select.obj
+         x64\Debug\SelectionsNSimbolics.obj
+         x64\Debug\SetTimeStamp.obj
+         x64\Debug\StartNFinish.obj
+         x64\Debug\User.obj
+         x64\Debug\Work.obj
+         HideAndSeekV2.vcxproj -> C:\Users\Jovana\Documents\GitHub\HSV2-old\x64\Debug\HideAndSeekV2.exe
+     1>Done Building Project "C:\Users\Jovana\Documents\GitHub\HSV2-old\HideAndSeekV2\HideAndSeekV2.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:44.92
