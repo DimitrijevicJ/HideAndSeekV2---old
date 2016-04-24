@@ -41,7 +41,7 @@ class Assign : public Command{
 public:
 	int getPriviledge() override { return 1; }
 	static Assign* fetch() { return assign; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete assign; assign = nullptr; }
 }; 
 

@@ -23,7 +23,7 @@ Selection* Copy::simbolicsNSelectionsCheck(string what) {
 	return select;
 }
 
-void Copy::copyDirectory(string what, string where, chars params) {
+void Copy::copyDirectory(string what, string where, chars& params) {
 	//don't like it fix it
 	int countCopied = 1;
 	if (params.size()==0 || (params.size()==1 && params[0] == 'd')) {
@@ -47,9 +47,11 @@ void Copy::copyDirectory(string what, string where, chars params) {
 	return;
 }
 
-void Copy::run(chars params, string param1, string param2) {
+void Copy::run(chars& params, string param1, string param2) {
 	path path1, path2; //path1 is what, path2 is where
 	Selection* select = nullptr;
+
+	if (param2 == ""||param1=="") throw new MissingOperands();
 	
 	//check for aliases
 	aliasCheck(&param1, &param2);
@@ -62,7 +64,7 @@ void Copy::run(chars params, string param1, string param2) {
 	select = simbolicsNSelectionsCheck(param1);
 	if (select) {
 		//selection to be copied
-		select->copySelection(param2);
+		select->copySelection(param2,params);
 		return;
 	}
 	
@@ -117,8 +119,40 @@ void Copy::run(chars params, string param1, string param2) {
 		if (is_directory(fileWhat)) throw new CopyDirectoryToFileError();
 		else {
 			//file->file
-			std::experimental::filesystem::copy(fileWhat, fileWhere);
-			std::cout << "Files copied : 1" << endl;
+			if (exists(fileWhere)) {
+				if (params.size() == 1||params.size()==0) {
+					printCopyOptions();
+fail:					char answer;
+					cin >> answer;
+					switch (answer) {
+					case 'Y': {
+						std::experimental::filesystem::copy(fileWhat, fileWhere,copy_options::overwrite_existing);
+						std::cout << "Files copied : 1" << endl; break;
+					}
+					case 'A': {
+						std::experimental::filesystem::copy(fileWhat, fileWhere,copy_options::overwrite_existing);
+						std::cout << "Files copied : 1" << endl;
+						params.resize(2, 'A');
+						if (params[0] == 'A') params[0] = 'd'; break;
+					}
+					case 'S': {break; }
+					case 'K': {params.resize(2, 'K'); if (params[0] == 'K') params[0] = 'd'; break; }
+					case 'B': {throw new AbortCopyCommand(); }
+					default: {cout << "Error. Please try again.\n"; goto fail; }
+					}
+				}
+				else //already known decision
+				{
+					if (params.size() == 2 && params[1] == 'A') {
+						std::experimental::filesystem::copy(fileWhat, fileWhere,copy_options::overwrite_existing);
+						std::cout << "Files copied : 1" << endl;
+					}
+				}
+			}
 		}
 	}
+}
+
+void Copy::printCopyOptions() {
+	cout << "Yes - Y\nYes All - A\nSkip - S\nSkip All - K\nAbort - B\n";
 }

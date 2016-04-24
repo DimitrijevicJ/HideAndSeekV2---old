@@ -34,10 +34,10 @@ void Selection::deleteSelection() {
 	first = nullptr;
 }
 
-void Selection::copySelection(string where) {
+void Selection::copySelection(string where,chars params) {
 	SelElem* current = first;
 	while (current) {
-		chars params(1); params[0] = 'r';
+		if (params.size() == 0) { params.resize(1); params[0] = 'r'; }
 		Copy::fetch()->run(params, current->elem->filePath().string(), where+"/"+current->elem->filePath().filename().string());
 		current = current->next;
 	}

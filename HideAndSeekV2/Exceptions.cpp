@@ -14,3 +14,11 @@ const char* CopyDirectoryToFileError::what() {
 	colorMe(COLOR_FUCHSIA);
 	return "You can't copy directory to a file. Please consult Help\n";
 }
+const char* AbortCopyCommand::what() {
+	colorMe(COLOR_FUCHSIA);
+	return "Aborted\n";
+}
+const char* MissingOperands::what() {
+	colorMe(COLOR_FUCHSIA);
+	return "Command is missing operands. Please consult Help\n";
+}

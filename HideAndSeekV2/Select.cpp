@@ -29,7 +29,7 @@ bool match(char *first, char * second)
 	return false;
 }
 
-void Select::run(chars params, string param1, string param2) {
+void Select::run(chars& params, string param1, string param2) {
 	Selection* select = new Selection(param1);
 	for (auto& file : recursive_directory_iterator(current_path())) {
 		string fileToAdd;

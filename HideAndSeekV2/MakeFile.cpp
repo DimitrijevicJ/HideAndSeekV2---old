@@ -2,7 +2,7 @@
 
 MakeFile* MakeFile::makeFile = new MakeFile();
 
-void MakeFile::run(chars params, string param1, string param2) {
+void MakeFile::run(chars& params, string param1, string param2) {
 	//mkdir directoryName
 	path pathh;
 	if (Aliases::fetchAliases()->fetchMap().count(param1))

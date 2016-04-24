@@ -42,6 +42,6 @@ class Help : public Command {
 public:
 	int getPriviledge() override { return 1; }
 	static Help* fetch() { return help; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete help; help = nullptr; }
 };

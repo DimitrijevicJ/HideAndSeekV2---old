@@ -41,7 +41,7 @@ class MakeDirectory : public Command{
 	MakeDirectory& operator=(const MakeDirectory&) = delete;
 public:
 	static MakeDirectory* fetch() { return makeDirectory; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete makeDirectory; makeDirectory = nullptr; }
 };
 

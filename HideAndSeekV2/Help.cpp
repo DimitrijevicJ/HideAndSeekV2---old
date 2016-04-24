@@ -2,7 +2,7 @@
 
 Help* Help::help = new Help();
 
-void Help::run(chars params, string param1, string param2) {
+void Help::run(chars& params, string param1, string param2) {
 	if (param1 == "" || param1 == "mkdir") {
 		cout << "MakeDirectory - mkdir" << endl << endl;
 		if (param1 != "") return;

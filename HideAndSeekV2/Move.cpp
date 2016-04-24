@@ -3,7 +3,7 @@
 Move* Move::move = new Move();
 int movee = 0;
 
-void Move::run(chars params, string param1, string param2) {
+void Move::run(chars& params, string param1, string param2) {
 	movee = 1;
 	params.resize(1);
 	params[0] = 'r';

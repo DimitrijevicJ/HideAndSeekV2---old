@@ -41,7 +41,7 @@ class MakeFile : public Command{
 	MakeFile& operator=(const MakeFile&) = delete;
 public:
 	static MakeFile* fetch() { return makeFile; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete makeFile; makeFile = nullptr; }
 };
 

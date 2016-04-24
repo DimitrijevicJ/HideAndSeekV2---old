@@ -42,7 +42,7 @@ class Delete : public Command {
 	Delete& operator=(const Delete&) = delete;
 public:
 	static Delete* fetch() { return deletee; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete deletee; deletee = nullptr; }
 };
 

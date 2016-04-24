@@ -46,7 +46,7 @@ public:
 	void operator-=(File* file);
 	void deleteSelection();
 	string fetchName() const { return name; }
-	void copySelection(string);
+	void copySelection(string,chars);
 };
 
 class Selections {

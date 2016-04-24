@@ -2,7 +2,7 @@
 
 MakeDirectory* MakeDirectory::makeDirectory = new MakeDirectory();
 
-void MakeDirectory::run(chars params, string param1, string param2) {
+void MakeDirectory::run(chars& params, string param1, string param2) {
 	//mkdir directoryName
 
 	//check if the parameters is an alias

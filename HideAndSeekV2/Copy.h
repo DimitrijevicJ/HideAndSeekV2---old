@@ -45,10 +45,11 @@ class Copy : public Command {
 	
 	void aliasCheck(string*, string*);
 	Selection* simbolicsNSelectionsCheck(string);
-	void Copy::copyDirectory(string, string, chars);
+	void copyDirectory(string, string, chars&);
+	void printCopyOptions();
 public:
 	static Copy* fetch() { return copy; }
-	void run(chars params, string param1, string param2);
+	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete copy; copy = nullptr; }
 };
 

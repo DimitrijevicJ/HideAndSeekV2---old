@@ -2,7 +2,7 @@
 
 Delete* Delete::deletee = new Delete();
 
-void Delete::run(chars params, string param1, string param2) {
+void Delete::run(chars& params, string param1, string param2) {
 
 	directory_entry file(param1);
 	if (!exists(file)) {

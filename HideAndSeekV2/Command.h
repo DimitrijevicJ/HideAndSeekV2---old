@@ -37,7 +37,7 @@ class Command {
 public:
 	virtual int getPriviledge() { return 0; }
 	virtual ~Command() {}
-	virtual void run(chars params, string param1, string param2) = 0;
+	virtual void run(chars& params, string param1, string param2) = 0;
 	static void parseCommand(string command);
 };
 
