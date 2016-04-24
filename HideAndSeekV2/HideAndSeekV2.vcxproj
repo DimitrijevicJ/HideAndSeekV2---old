@@ -159,6 +159,7 @@
     <ClInclude Include="Quit.h" />
     <ClInclude Include="Select.h" />
     <ClInclude Include="SelectionsNSimbolics.h" />
+    <ClInclude Include="SetTimeStamp.h" />
     <ClInclude Include="StartNFinish.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
@@ -178,6 +179,7 @@
     <ClCompile Include="Quit.cpp" />
     <ClCompile Include="Select.cpp" />
     <ClCompile Include="SelectionsNSimbolics.cpp" />
+    <ClCompile Include="SetTimeStamp.cpp" />
     <ClCompile Include="StartNFinish.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Work.cpp" />
