@@ -10,6 +10,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Compare.h"
+#include "Info.h"
 #include "SetTimeStamp.h"
 #include "ColorMe.h"
 #include "Aliases.h"
@@ -40,6 +42,7 @@ public:
 	File(path pathh) { directory = absolute(pathh.parent_path()); fileName = pathh.filename(); }
 	File(const File& file) { directory = file.directory; fileName = file.fileName; }
 
-	bool operator==(File file2) { return directory == file2.directory&&fileName == file2.directory; }
+	bool operator==(File file2) { return directory == file2.directory&&fileName == file2.fileName; }
 	path filePath() const { return directory / fileName; }
+	string fileNames() { return fileName.string(); }
 };

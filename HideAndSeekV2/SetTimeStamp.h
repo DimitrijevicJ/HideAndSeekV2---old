@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <ctime>
 
+#include "Compare.h"
+#include "Info.h"
 #include "ColorMe.h"
 #include "Aliases.h"
 #include "Assign.h"
@@ -40,8 +42,8 @@ class SetTimeStamp : public Command {
 	SetTimeStamp() = default;
 	SetTimeStamp(const SetTimeStamp&) = delete;
 	SetTimeStamp& operator=(const SetTimeStamp&) = delete;
-	time_t getTime(string time);
 public:
+	time_t getTime(string time);
 	static SetTimeStamp* fetch() { return setTimeStamp; }
 	void run(chars& params, string param1, string param2);
 	static void cleanUp() { delete setTimeStamp;  setTimeStamp = nullptr; }

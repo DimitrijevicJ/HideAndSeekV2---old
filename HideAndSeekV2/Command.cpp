@@ -1,4 +1,5 @@
 #include "Command.h"
+#include "Info.h"
 #include "ColorMe.h"
 #include "Aliases.h"
 #include "Assign.h"
@@ -18,6 +19,7 @@
 #include "Quit.h"
 #include "User.h"
 #include "SetTimeStamp.h"
+#include "Compare.h"
 
 Commands* Commands::commands = new Commands();
 

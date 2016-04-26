@@ -14,6 +14,8 @@ void addCommands() {
 	Commands::fetch()->fetchMap().insert({ "sl", Select::fetch() });
 	Commands::fetch()->fetchMap().insert({ "q", Quit::fetch() });
 	Commands::fetch()->fetchMap().insert({ "setts", SetTimeStamp::fetch() });
+	Commands::fetch()->fetchMap().insert({ "info", Info::fetch() });
+	Commands::fetch()->fetchMap().insert({ "comp", Info::fetch() });
 }
 
 void start() {
@@ -63,6 +65,8 @@ void freeMemory() {
 	Select::cleanUp();
 	Simbolics::cleanUp();
 	SetTimeStamp::cleanUp();
+	Info::cleanUp();
+	Compare::cleanUp();
 
 	User::cleanUp();
 }

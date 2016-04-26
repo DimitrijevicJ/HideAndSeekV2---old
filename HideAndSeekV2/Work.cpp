@@ -8,6 +8,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Compare.h"
+#include "Info.h"
 #include "ColorMe.h"
 #include "Aliases.h"
 #include "Assign.h"
@@ -36,7 +38,7 @@ int main(int argc, char* argv[])
 	if (argc == 2) {
 		if (string(argv[1]) == "password") User::fetchUser()->changeUserMode();
 	}
-	
+
 	start();
 	while (1) {
 		try {

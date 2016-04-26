@@ -11,6 +11,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Compare.h"
+#include "Info.h"
 #include "SetTimeStamp.h"
 #include "ColorMe.h"
 #include "Assign.h"

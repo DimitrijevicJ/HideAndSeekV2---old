@@ -147,11 +147,13 @@
     <ClInclude Include="ChangeDirectory.h" />
     <ClInclude Include="ColorMe.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="Compare.h" />
     <ClInclude Include="Copy.h" />
     <ClInclude Include="Delete.h" />
     <ClInclude Include="Exceptions.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Help.h" />
+    <ClInclude Include="Info.h" />
     <ClInclude Include="MakeDirectory.h" />
     <ClInclude Include="MakeFile.h" />
     <ClInclude Include="Move.h" />
@@ -168,9 +170,11 @@
     <ClCompile Include="Assign.cpp" />
     <ClCompile Include="ChangeDirectory.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Compare.cpp" />
     <ClCompile Include="Copy.cpp" />
     <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="Help.cpp" />
+    <ClCompile Include="Info.cpp" />
     <ClCompile Include="MakeDirectory.cpp" />
     <ClCompile Include="MakeFile.cpp" />
     <ClCompile Include="Delete.cpp" />

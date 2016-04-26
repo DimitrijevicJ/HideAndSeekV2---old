@@ -27,6 +27,14 @@ class MissingOperands : public exception {
 public:
 	const char* what();
 };
+class OperationNotSupported : public exception {
+public:
+	const char* what();
+};
+class NotExistingCriterium : public exception {
+public:
+	const char* what();
+};
 
 
 
