@@ -27,10 +27,8 @@ void PrintDirectoryContents::run(chars& params, string param1, string param2) {
 			permissions(p.status());
 		}
 		if (options & 2) {//size
-			struct stat filestatus;
-			stat(p.path().string().c_str(), &filestatus);
 			cout << setw(13);
-			cout << filestatus.st_size << " B	";
+			cout << fileSize(p) << " B	";
 		}
 		if (options & 4) {//date
 			auto ftime = last_write_time(p);
@@ -62,4 +60,20 @@ void PrintDirectoryContents::fileType(file_status stat) {
 	cout << left << setw(7);
 	if (is_regular_file(stat)) std::cout << "     ";
 	if (is_directory(stat)) std::cout << "<DIR>";
+}
+
+int PrintDirectoryContents::fileSize(path pathh) {
+	int totalSize = 0;
+	struct stat filestatus;
+	if (!is_directory(pathh)) {
+		stat(pathh.string().c_str(), &filestatus);
+		totalSize = filestatus.st_size;
+	}
+	else
+		for (auto p : recursive_directory_iterator(pathh)) 
+			if (!is_directory(p)) {
+				stat(p.path().string().c_str(), &filestatus);
+				totalSize += filestatus.st_size;
+			}
+	return totalSize;
 }

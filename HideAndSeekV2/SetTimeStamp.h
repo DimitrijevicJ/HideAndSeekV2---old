@@ -10,6 +10,7 @@
 #include <bitset>
 #include <vector>
 #include <unordered_map>
+#include <ctime>
 
 #include "ColorMe.h"
 #include "Aliases.h"
@@ -33,3 +34,15 @@ using namespace std;
 using namespace std::experimental::filesystem;
 
 typedef vector<char> chars;
+
+class SetTimeStamp : public Command {
+	static SetTimeStamp* setTimeStamp;
+	SetTimeStamp() = default;
+	SetTimeStamp(const SetTimeStamp&) = delete;
+	SetTimeStamp& operator=(const SetTimeStamp&) = delete;
+	time_t getTime(string time);
+public:
+	static SetTimeStamp* fetch() { return setTimeStamp; }
+	void run(chars& params, string param1, string param2);
+	static void cleanUp() { delete setTimeStamp;  setTimeStamp = nullptr; }
+};

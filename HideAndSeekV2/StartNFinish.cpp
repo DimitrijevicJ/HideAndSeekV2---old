@@ -13,6 +13,7 @@ void addCommands() {
 	Commands::fetch()->fetchMap().insert({ "dir", PrintDirectoryContents::fetch() });
 	Commands::fetch()->fetchMap().insert({ "sl", Select::fetch() });
 	Commands::fetch()->fetchMap().insert({ "q", Quit::fetch() });
+	Commands::fetch()->fetchMap().insert({ "setts", SetTimeStamp::fetch() });
 }
 
 void start() {
@@ -61,6 +62,7 @@ void freeMemory() {
 	Quit::cleanUp();
 	Select::cleanUp();
 	Simbolics::cleanUp();
+	SetTimeStamp::cleanUp();
 
 	User::cleanUp();
 }

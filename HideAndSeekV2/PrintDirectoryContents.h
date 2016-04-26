@@ -12,6 +12,7 @@
 #include <vector>
 #include <unordered_map>
 
+#include "SetTimeStamp.h"
 #include "ColorMe.h"
 #include "Aliases.h"
 #include "Assign.h"
@@ -48,4 +49,5 @@ public:
 private:
 	void permissions(file_status stat);
 	void fileType(file_status stat);
+	int fileSize(path pathh);
 };

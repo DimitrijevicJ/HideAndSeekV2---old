@@ -12,6 +12,7 @@
 #include <vector>
 #include <unordered_map>
 
+#include "SetTimeStamp.h"
 #include "ColorMe.h"
 #include "Aliases.h"
 #include "Assign.h"

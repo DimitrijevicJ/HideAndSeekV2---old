@@ -17,6 +17,7 @@
 #include "File.h"
 #include "Quit.h"
 #include "User.h"
+#include "SetTimeStamp.h"
 
 Commands* Commands::commands = new Commands();
 
@@ -33,9 +34,10 @@ void Command::parseCommand(string command) {
 		}
 		else {
 			if (param1 == "") param1 = word;
-			else param2 = word;
+			else param2 += word+" ";
 		}
 	}
+	if(param2!="") param2.erase(param2.length() - 1, 1);
 	params.resize(numParams);
 
 	if (Commands::fetch()->fetchMap().count(com)==0) {
